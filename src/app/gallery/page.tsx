@@ -26,6 +26,7 @@ const photos = [
   { src: 'https://placehold.co/400x600.png', hint: 'holiday celebration', caption: 'Our first holiday as a couple. Oct 31, 2024' },
   { src: 'https://placehold.co/600x400.png', hint: 'rainy day', caption: 'Cozy on a rainy day. Nov 19, 2024' },
   { src: 'https://placehold.co/600x400.png', hint: 'anniversary dinner', caption: 'Our first anniversary dinner. Dec 16, 2024' },
+  { src: 'https://placehold.co/600x400.png', hint: 'road trip', caption: 'Our latest road trip adventure.' },
 ];
 
 export default function GalleryPage() {
@@ -84,8 +85,9 @@ export default function GalleryPage() {
                         {selectedPhoto && (
                             <div className='relative'>
                                 <DialogTitle className="sr-only">{selectedPhoto.caption}</DialogTitle>
+
                                 <DialogDescription className="sr-only">A larger view of the selected photo: {selectedPhoto.caption}</DialogDescription>
-                                <DialogClose className="absolute right-2 top-2 z-10 rounded-full p-1 bg-black/50 text-white hover:bg-black/75 transition-colors focus:outline-none">
+                                <DialogClose className="absolute right-2 top-2 z-20 rounded-full p-1 bg-black/50 text-white hover:bg-black/75 transition-colors focus:outline-none">
                                     <X className="w-6 h-6" />
                                     <span className="sr-only">Close</span>
                                 </DialogClose>

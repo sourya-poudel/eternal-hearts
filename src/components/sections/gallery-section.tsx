@@ -16,6 +16,7 @@ const photos = [
   { src: 'https://placehold.co/400x600.png', hint: 'coffee date', caption: 'Countless coffee dates. Apr 22, 2024' },
   { src: 'https://placehold.co/600x400.png', hint: 'mountain hike', caption: 'Adventures in the mountains. May 30, 2024' },
   { src: 'https://placehold.co/600x400.png', hint: 'anniversary dinner', caption: 'Our first anniversary dinner. Dec 16, 2024' },
+  { src: 'https://placehold.co/600x400.png', hint: 'road trip', caption: 'Our latest road trip adventure.' },
 ];
 
 export default function GallerySection() {
@@ -35,8 +36,8 @@ export default function GallerySection() {
               A collection of moments that made us who we are. Click a photo to see it larger.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-            {photos.map((photo, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+            {photos.slice(0, 8).map((photo, index) => (
               <DialogTrigger key={index} asChild onClick={() => setSelectedPhoto(photo)}>
                 <Card className="overflow-hidden group transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
                   <CardContent className="p-0">
@@ -69,7 +70,7 @@ export default function GallerySection() {
                 <div className='relative'>
                     <DialogTitle className="sr-only">{selectedPhoto.caption}</DialogTitle>
                     <DialogDescription className="sr-only">A larger view of the selected photo: {selectedPhoto.caption}</DialogDescription>
-                    <DialogClose className="absolute right-2 top-2 z-10 rounded-full p-1 bg-black/50 text-white hover:bg-black/75 transition-colors focus:outline-none">
+                    <DialogClose className="absolute right-2 top-2 z-20 rounded-full p-1 bg-black/50 text-white hover:bg-black/75 transition-colors focus:outline-none">
                         <X className="w-6 h-6" />
                         <span className="sr-only">Close</span>
                     </DialogClose>
