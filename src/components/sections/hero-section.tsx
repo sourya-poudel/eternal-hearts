@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <section id="home" className="relative w-full h-dvh flex items-center justify-center text-center text-white">
       <Image
-        src="https://placehold.co/1920x1080.png"
+        src="https://previews.dropbox.com/1920x1080.png"
         alt="Romantic background"
         data-ai-hint="couple romantic"
         layout="fill"

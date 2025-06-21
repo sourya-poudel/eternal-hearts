@@ -10,10 +10,10 @@ import Link from 'next/link';
 
 
 const videos = [
-  { src: 'https://placehold.co/600x400.png', hint: 'couple laughing', caption: 'Laughing until we cried' },
-  { src: 'https://placehold.co/600x400.png', hint: 'dancing rain', caption: 'Dancing in the summer rain' },
-  { src: 'https://placehold.co/600x400.png', hint: 'travel vlog', caption: 'Our trip to the coast' },
-  { src: 'https://placehold.co/600x400.png', hint: 'cooking together', caption: 'Kitchen chaos and fun' },
+  { src: 'https://previews.dropbox.com/p/thumb/ACo8PhXB6UmmLWTh3N4o04KgldQns-eGRF9nlsnxwbeBR-C5QsDsEXtnAhuVxlBN7q0Pdgq8qy0ifaOAxC5XoEHCQfj3jugEurIbqQrsxmtN5cezBGsb8l2rbWBP-5V03uF1bZZFEvNWmGB0A_pXFUwlhRe-R_mA6mz7F7ldNUKPuhDHVHYUFAaR6l99kdRBU8dU81scflw22F2j3MMj_rQOSgGTlgZrngSJs2ysMEK5FWS0VqAJAHqsMk3ZitU5rmqj1F5WuTnesUG6i7tix1xpGh9PKXLhuq_bbUrRvzoieDAL9ZQpPbCUNgcWqbAigiUve8QSleDXRkUuNX1YTixm/p.jpeg?is_prewarmed=true', hint: 'couple laughing', caption: 'Laughing until we cried' },
+  { src: 'https://previews.dropbox.com/p/thumb/ACo8PhXB6UmmLWTh3N4o04KgldQns-eGRF9nlsnxwbeBR-C5QsDsEXtnAhuVxlBN7q0Pdgq8qy0ifaOAxC5XoEHCQfj3jugEurIbqQrsxmtN5cezBGsb8l2rbWBP-5V03uF1bZZFEvNWmGB0A_pXFUwlhRe-R_mA6mz7F7ldNUKPuhDHVHYUFAaR6l99kdRBU8dU81scflw22F2j3MMj_rQOSgGTlgZrngSJs2ysMEK5FWS0VqAJAHqsMk3ZitU5rmqj1F5WuTnesUG6i7tix1xpGh9PKXLhuq_bbUrRvzoieDAL9ZQpPbCUNgcWqbAigiUve8QSleDXRkUuNX1YTixm/p.jpeg?is_prewarmed=true/600x400.png', hint: 'dancing rain', caption: 'Dancing in the summer rain' },
+  { src: 'https://previews.dropbox.com/p/thumb/ACo8PhXB6UmmLWTh3N4o04KgldQns-eGRF9nlsnxwbeBR-C5QsDsEXtnAhuVxlBN7q0Pdgq8qy0ifaOAxC5XoEHCQfj3jugEurIbqQrsxmtN5cezBGsb8l2rbWBP-5V03uF1bZZFEvNWmGB0A_pXFUwlhRe-R_mA6mz7F7ldNUKPuhDHVHYUFAaR6l99kdRBU8dU81scflw22F2j3MMj_rQOSgGTlgZrngSJs2ysMEK5FWS0VqAJAHqsMk3ZitU5rmqj1F5WuTnesUG6i7tix1xpGh9PKXLhuq_bbUrRvzoieDAL9ZQpPbCUNgcWqbAigiUve8QSleDXRkUuNX1YTixm/p.jpeg?is_prewarmed=true/600x400.png', hint: 'travel vlog', caption: 'Our trip to the coast' },
+  { src: 'https://previews.dropbox.com/p/thumb/ACo8PhXB6UmmLWTh3N4o04KgldQns-eGRF9nlsnxwbeBR-C5QsDsEXtnAhuVxlBN7q0Pdgq8qy0ifaOAxC5XoEHCQfj3jugEurIbqQrsxmtN5cezBGsb8l2rbWBP-5V03uF1bZZFEvNWmGB0A_pXFUwlhRe-R_mA6mz7F7ldNUKPuhDHVHYUFAaR6l99kdRBU8dU81scflw22F2j3MMj_rQOSgGTlgZrngSJs2ysMEK5FWS0VqAJAHqsMk3ZitU5rmqj1F5WuTnesUG6i7tix1xpGh9PKXLhuq_bbUrRvzoieDAL9ZQpPbCUNgcWqbAigiUve8QSleDXRkUuNX1YTixm/p.jpeg?is_prewarmed=true/600x400.png', hint: 'cooking together', caption: 'Kitchen chaos and fun' },
 ];
 
 export default function VideoSection() {
