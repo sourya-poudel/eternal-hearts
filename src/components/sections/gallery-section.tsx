@@ -1,5 +1,10 @@
+'use client';
+
 import Image from 'next/image';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { useState } from 'react';
+import { Heart } from 'lucide-react';
 
 const photos = [
   { src: 'https://placehold.co/600x400.png', hint: 'couple smiling', caption: 'The day we first smiled together. Dec 20, 2023' },
@@ -11,37 +16,62 @@ const photos = [
 ];
 
 export default function GallerySection() {
+  const [selectedPhoto, setSelectedPhoto] = useState<(typeof photos)[0] | null>(null);
+
   return (
     <section id="gallery" className="w-full py-16 md:py-24">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center text-center mb-12">
-          <h2 className="font-headline text-4xl md:text-5xl font-bold">Photo Gallery</h2>
-          <p className="mt-4 max-w-2xl text-muted-foreground text-lg">
-            A collection of moments that made us who we are.
-          </p>
+      <Dialog open={!!selectedPhoto} onOpenChange={(isOpen) => !isOpen && setSelectedPhoto(null)}>
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col items-center text-center mb-12">
+            <h2 className="font-headline text-4xl md:text-5xl font-bold flex items-center gap-3">
+                <Heart className="w-10 h-10 text-primary/50" />
+                Photo Gallery
+                <Heart className="w-10 h-10 text-primary/50" />
+            </h2>
+            <p className="mt-4 max-w-2xl text-muted-foreground text-lg">
+              A collection of moments that made us who we are. Click a photo to see it larger.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+            {photos.map((photo, index) => (
+              <DialogTrigger key={index} asChild onClick={() => setSelectedPhoto(photo)}>
+                <Card className="overflow-hidden group transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
+                  <CardContent className="p-0">
+                    <div className="aspect-w-1 aspect-h-1 relative overflow-hidden">
+                        <Image
+                          src={photo.src}
+                          alt={photo.caption}
+                          width={600}
+                          height={400}
+                          data-ai-hint={photo.hint}
+                          className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                        />
+                    </div>
+                  </CardContent>
+                  <CardFooter className="p-4 bg-card">
+                    <p className="text-sm text-muted-foreground">{photo.caption}</p>
+                  </CardFooter>
+                </Card>
+              </DialogTrigger>
+            ))}
+          </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-          {photos.map((photo, index) => (
-            <Card key={index} className="overflow-hidden group transform transition-transform duration-300 hover:-translate-y-2">
-              <CardContent className="p-0">
-                <div className="aspect-w-1 aspect-h-1 relative overflow-hidden">
+        <DialogContent className="max-w-4xl w-full p-2 bg-transparent border-none shadow-none">
+            {selectedPhoto && (
+                <div className='relative'>
                     <Image
-                      src={photo.src}
-                      alt={photo.caption}
-                      width={600}
-                      height={400}
-                      data-ai-hint={photo.hint}
-                      className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                      src={selectedPhoto.src}
+                      alt={selectedPhoto.caption}
+                      width={1200}
+                      height={800}
+                      data-ai-hint={selectedPhoto.hint}
+                      className="object-contain w-full h-auto rounded-lg shadow-2xl"
                     />
+                     <p className="absolute bottom-4 left-4 right-4 p-4 bg-black/50 text-white rounded-b-lg text-center backdrop-blur-sm">{selectedPhoto.caption}</p>
                 </div>
-              </CardContent>
-              <CardFooter className="p-4 bg-card">
-                <p className="text-sm text-muted-foreground">{photo.caption}</p>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      </div>
+            )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }

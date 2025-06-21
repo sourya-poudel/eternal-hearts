@@ -1,5 +1,8 @@
+'use client';
+
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Heart } from 'lucide-react';
+import { Heart, CalendarHeart, HandHeart, Users, HeartPulse } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const timelineEvents = [
   {
@@ -9,18 +12,92 @@ const timelineEvents = [
     icon: <Heart className="w-6 h-6 text-white" />,
   },
   {
-    date: 'April 1, 2025',
-    title: 'Anniversary',
-    description: 'Celebrating a year of love, laughter, and unforgettable memories together.',
-    icon: <Heart className="w-6 h-6 text-white" />,
+    date: 'December 21, 2024',
+    title: 'First Interaction',
+    description: 'Our first real conversation at the COFAS international computer olympiad.',
+    icon: <CalendarHeart className="w-6 h-6 text-white" />,
   },
   {
-    date: 'Future...',
-    title: 'Many More to Come',
-    description: 'Our adventure is just beginning. Here\'s to a future filled with endless love.',
-    icon: <Heart className="w-6 h-6 text-white" />,
+    date: 'April 1, 2025',
+    title: 'The Proposal',
+    description: 'Exactly at midnight, when I asked you to be mine forever, and our journey truly started.',
+    icon: <Heart className="w-6 h-6 text-white fill-white" />,
+    special: 'timer',
+  },
+  {
+    date: 'April 3, 2025',
+    title: 'First Time Holding Hands',
+    description: 'That simple touch that sent sparks flying and made the world disappear.',
+    icon: <HandHeart className="w-6 h-6 text-white" />,
+  },
+  {
+    date: 'April 19, 2025',
+    title: 'Parents Found Out',
+    description: 'The day our love became known, marking a new chapter in our story.',
+    icon: <Users className="w-6 h-6 text-white" />,
+  },
+  {
+    date: 'May 6, 2025',
+    title: 'Our First Kiss',
+    description: 'A moment sealed with a kiss, a promise of all the beautiful moments to come.',
+    icon: <HeartPulse className="w-6 h-6 text-white" />,
   },
 ];
+
+const CountdownTimer = () => {
+    const [timeSince, setTimeSince] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+    useEffect(() => {
+        const proposalDate = new Date('2025-04-01T00:00:00');
+        
+        const interval = setInterval(() => {
+            const now = new Date();
+            if (now < proposalDate) return;
+
+            const totalSeconds = Math.floor((now.getTime() - proposalDate.getTime()) / 1000);
+            const days = Math.floor(totalSeconds / (3600 * 24));
+            const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+            
+            setTimeSince({ days, hours, minutes, seconds });
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
+  
+  return (
+    <div className="w-full md:w-5/12 p-4 flex items-center justify-center">
+        <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300 w-full bg-primary/10 border-primary/20">
+            <CardHeader className="text-center">
+                <CardTitle className="font-headline text-2xl text-primary">Counting Up Since We Began</CardTitle>
+                <CardDescription>Our journey as one...</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <div className="grid grid-cols-4 gap-2 text-center">
+                    <div>
+                        <div className="font-bold text-3xl md:text-4xl text-primary">{timeSince.days}</div>
+                        <div className="text-xs text-muted-foreground">Days</div>
+                    </div>
+                     <div>
+                        <div className="font-bold text-3xl md:text-4xl text-primary">{timeSince.hours}</div>
+                        <div className="text-xs text-muted-foreground">Hours</div>
+                    </div>
+                     <div>
+                        <div className="font-bold text-3xl md:text-4xl text-primary">{timeSince.minutes}</div>
+                        <div className="text-xs text-muted-foreground">Minutes</div>
+                    </div>
+                     <div>
+                        <div className="font-bold text-3xl md:text-4xl text-primary">{timeSince.seconds}</div>
+                        <div className="text-xs text-muted-foreground">Seconds</div>
+                    </div>
+                </div>
+            </CardContent>
+        </Card>
+    </div>
+  );
+}
+
 
 export default function TimelineSection() {
   return (
@@ -61,8 +138,12 @@ export default function TimelineSection() {
               {/* Spacer */}
               <div className="hidden md:block md:w-1/12"></div>
 
-              {/* Date on the other side for larger screens */}
-              <div className="hidden md:block md:w-5/12"></div>
+              {/* Other Side: Timer or Empty Div */}
+              {event.special === 'timer' ? (
+                <CountdownTimer />
+              ) : (
+                <div className="hidden md:block md:w-5/12"></div>
+              )}
             </div>
           ))}
         </div>

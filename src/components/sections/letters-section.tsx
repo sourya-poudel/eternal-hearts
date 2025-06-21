@@ -21,7 +21,11 @@ export default function LettersSection() {
     <section id="letters" className="w-full py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center mb-12">
-          <h2 className="font-headline text-4xl md:text-5xl font-bold">Love Letters</h2>
+          <h2 className="font-headline text-4xl md:text-5xl font-bold flex items-center gap-3">
+            <Heart className="w-10 h-10 text-primary/50" />
+            Love Letters
+            <Heart className="w-10 h-10 text-primary/50" />
+            </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground text-lg">
             Words from the heart, for you and you only.
           </p>
@@ -40,7 +44,11 @@ export default function LettersSection() {
                   "{letter.excerpt}"
                 </p>
               </CardContent>
-              <Heart className="w-5 h-5 text-primary/50 mt-4 fill-current" />
+              <div className="flex items-center justify-center gap-2 p-4 pt-2">
+                <Heart className="w-5 h-5 text-primary/50 fill-current" />
+                <Heart className="w-5 h-5 text-primary/30 fill-current" />
+                <Heart className="w-5 h-5 text-primary/20 fill-current" />
+              </div>
             </Card>
           ))}
         </div>
