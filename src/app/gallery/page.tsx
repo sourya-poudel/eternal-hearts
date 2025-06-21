@@ -14,7 +14,7 @@ import Link from 'next/link';
 
 const photos = [
   { src: 'https://i.ibb.co/L5kL04v/IMG-20240714-WA0004.jpg', hint: 'couple smiling', caption: 'The day we first smiled together. Dec 20, 2023' },
-  { src: 'https://placehold.co/400x600.png', hint: 'romantic dinner', caption: 'Our first fancy dinner date. Jan 15, 2024' },
+  { src: 'https://i.ibb.co/L5kL04v/IMG-20240714-WA0004.jpg', hint: 'couple smiling', caption: 'Our first fancy dinner date. Jan 15, 2024' },
   { src: 'https://placehold.co/600x400.png', hint: 'beach sunset', caption: 'Sunset walks on the beach. Feb 14, 2024' },
   { src: 'https://placehold.co/600x400.png', hint: 'city walk', caption: 'Exploring the city lights. Mar 10, 2024' },
   { src: 'https://placehold.co/400x600.png', hint: 'coffee date', caption: 'Countless coffee dates. Apr 22, 2024' },
