@@ -15,6 +15,7 @@ const photos = [
   { src: 'https://placehold.co/600x400.png', hint: 'city walk', caption: 'Exploring the city lights. Mar 10, 2024' },
   { src: 'https://placehold.co/400x600.png', hint: 'coffee date', caption: 'Countless coffee dates. Apr 22, 2024' },
   { src: 'https://placehold.co/600x400.png', hint: 'mountain hike', caption: 'Adventures in the mountains. May 30, 2024' },
+  { src: 'https://placehold.co/600x400.png', hint: 'anniversary dinner', caption: 'Our first anniversary dinner. Dec 16, 2024' },
 ];
 
 export default function GallerySection() {

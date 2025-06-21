@@ -25,6 +25,7 @@ const photos = [
   { src: 'https://placehold.co/600x400.png', hint: 'reading books', caption: 'Quiet moments together. Sep 12, 2024' },
   { src: 'https://placehold.co/400x600.png', hint: 'holiday celebration', caption: 'Our first holiday as a couple. Oct 31, 2024' },
   { src: 'https://placehold.co/600x400.png', hint: 'rainy day', caption: 'Cozy on a rainy day. Nov 19, 2024' },
+  { src: 'https://placehold.co/600x400.png', hint: 'anniversary dinner', caption: 'Our first anniversary dinner. Dec 16, 2024' },
 ];
 
 export default function GalleryPage() {
