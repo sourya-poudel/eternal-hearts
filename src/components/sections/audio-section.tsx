@@ -1,25 +1,21 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Music, Play, Pause, Mic } from 'lucide-react';
+import { Heart, Play } from 'lucide-react';
 
 const audioFiles = [
   {
-    type: 'song',
     title: 'Our Song',
     artist: 'A Special Dedication',
   },
   {
-    type: 'message',
     title: 'A Message For You',
     artist: 'From my heart',
   },
   {
-    type: 'song',
     title: 'First Dance',
     artist: 'Memory Lane',
   },
   {
-    type: 'message',
     title: 'Good Morning, Love',
     artist: 'Voice Note',
   },
@@ -40,11 +36,7 @@ export default function AudioSection() {
             <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardContent className="p-6 flex items-center gap-4">
                 <div className="bg-primary/20 p-4 rounded-full">
-                  {file.type === 'song' ? (
-                    <Music className="w-8 h-8 text-primary" />
-                  ) : (
-                    <Mic className="w-8 h-8 text-primary" />
-                  )}
+                  <Heart className="w-8 h-8 text-primary" />
                 </div>
                 <div className="flex-grow">
                   <h3 className="font-bold text-lg">{file.title}</h3>

@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Calendar, Gift, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 const timelineEvents = [
   {
@@ -12,13 +12,13 @@ const timelineEvents = [
     date: 'April 1, 2025',
     title: 'Anniversary',
     description: 'Celebrating a year of love, laughter, and unforgettable memories together.',
-    icon: <Gift className="w-6 h-6 text-white" />,
+    icon: <Heart className="w-6 h-6 text-white" />,
   },
   {
     date: 'Future...',
     title: 'Many More to Come',
     description: 'Our adventure is just beginning. Here\'s to a future filled with endless love.',
-    icon: <Calendar className="w-6 h-6 text-white" />,
+    icon: <Heart className="w-6 h-6 text-white" />,
   },
 ];
 
