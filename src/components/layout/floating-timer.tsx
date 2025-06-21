@@ -34,15 +34,24 @@ export default function FloatingTimer() {
     useEffect(() => {
         const handleScroll = () => {
             const timelineSection = document.getElementById('timeline');
-            if (!timelineSection) {
+            const gallerySection = document.getElementById('gallery');
+            
+            if (!timelineSection || !gallerySection) {
                 setIsVisible(true);
                 return;
             }
 
-            const rect = timelineSection.getBoundingClientRect();
-            const isInView = rect.top < window.innerHeight && rect.bottom >= 0;
+            const timelineRect = timelineSection.getBoundingClientRect();
+            const galleryRect = gallerySection.getBoundingClientRect();
 
-            setIsVisible(!isInView);
+            const isTimelineInView = timelineRect.top < window.innerHeight && timelineRect.bottom > 0;
+            const isGalleryVisible = galleryRect.top < window.innerHeight;
+
+            if (isTimelineInView && !isGalleryVisible) {
+                setIsVisible(false);
+            } else {
+                setIsVisible(true);
+            }
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
