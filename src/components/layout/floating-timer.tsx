@@ -3,9 +3,11 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Heart } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { cn } from '@/lib/utils';
 
 export default function FloatingTimer() {
     const [timeSince, setTimeSince] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         const proposalDate = new Date('2025-04-01T00:00:00');
@@ -28,9 +30,32 @@ export default function FloatingTimer() {
 
         return () => clearInterval(interval);
     }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const timelineSection = document.getElementById('timeline');
+            if (!timelineSection) {
+                setIsVisible(true);
+                return;
+            }
+
+            const rect = timelineSection.getBoundingClientRect();
+            const isInView = rect.top < window.innerHeight && rect.bottom >= 0;
+
+            setIsVisible(!isInView);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
   
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <div className={cn(
+        "fixed bottom-4 right-4 z-50 transition-opacity duration-500",
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+    )}>
         <Card className="shadow-2xl bg-card border-primary/30 w-64">
             <CardHeader className="p-3 pb-1 text-center">
                 <CardTitle className="font-headline text-md text-primary flex items-center justify-center gap-2">
