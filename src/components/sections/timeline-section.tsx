@@ -6,6 +6,13 @@ import { useState, useEffect } from 'react';
 
 const timelineEvents = [
   {
+    date: 'December 16, 2024',
+    title: 'First Meeting',
+    description: 'The day our paths crossed and a new story began. A moment of serendipity.',
+    icon: <Heart className="w-6 h-6 text-white" />,
+    jsDate: '2024-12-16T00:00:00',
+  },
+  {
     date: 'December 21, 2024',
     title: 'First Interaction',
     description: 'Our first real conversation at the COFAS international computer olympiad.',
@@ -39,13 +46,6 @@ const timelineEvents = [
     description: 'A moment sealed with a kiss, a promise of all the beautiful moments to come.',
     icon: <HeartPulse className="w-6 h-6 text-white" />,
     jsDate: '2025-05-06T00:00:00',
-  },
-  {
-    date: 'December 16, 2025',
-    title: 'First Meeting',
-    description: 'The day our paths crossed and a new story began. A moment of serendipity.',
-    icon: <Heart className="w-6 h-6 text-white" />,
-    jsDate: '2025-12-16T00:00:00',
   },
 ];
 
