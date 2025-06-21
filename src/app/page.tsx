@@ -1,3 +1,25 @@
+import Header from '@/components/layout/header';
+import Footer from '@/components/layout/footer';
+import HeroSection from '@/components/sections/hero-section';
+import TimelineSection from '@/components/sections/timeline-section';
+import GallerySection from '@/components/sections/gallery-section';
+import VideoSection from '@/components/sections/video-section';
+import LettersSection from '@/components/sections/letters-section';
+import AudioSection from '@/components/sections/audio-section';
+
 export default function Home() {
-  return <></>;
+  return (
+    <div className="flex flex-col min-h-dvh bg-background">
+      <Header />
+      <main className="flex-1">
+        <HeroSection />
+        <TimelineSection />
+        <GallerySection />
+        <VideoSection />
+        <LettersSection />
+        <AudioSection />
+      </main>
+      <Footer />
+    </div>
+  );
 }
