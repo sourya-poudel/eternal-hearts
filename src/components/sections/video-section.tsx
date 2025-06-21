@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
-import { PlayCircle, Heart } from 'lucide-react';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { PlayCircle, Heart, X } from 'lucide-react';
+import { Dialog, DialogContent, DialogTrigger, DialogClose } from '@/components/ui/dialog';
 import { useState } from 'react';
 
 
@@ -56,9 +56,13 @@ export default function VideoSection() {
             ))}
           </div>
         </div>
-        <DialogContent className="max-w-4xl w-full p-2 bg-transparent border-none shadow-none aspect-video">
+        <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-none shadow-none aspect-video">
           {selectedVideo && (
             <div className="relative w-full h-full">
+                <DialogClose className="absolute right-2 top-2 z-20 rounded-full p-1 bg-black/50 text-white hover:bg-black/75 transition-colors focus:outline-none">
+                    <X className="w-6 h-6" />
+                    <span className="sr-only">Close</span>
+                </DialogClose>
                 <Image
                   src={selectedVideo.src}
                   alt={selectedVideo.caption}
@@ -66,10 +70,10 @@ export default function VideoSection() {
                   data-ai-hint={selectedVideo.hint}
                   className="object-contain rounded-lg shadow-2xl"
                 />
-                 <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                 <div className="absolute inset-0 bg-black/30 flex items-center justify-center z-10">
                   <PlayCircle className="w-24 h-24 text-white/80" />
                 </div>
-                <p className="absolute bottom-4 left-4 right-4 p-4 bg-black/50 text-white rounded-b-lg text-center backdrop-blur-sm">{selectedVideo.caption}</p>
+                <p className="absolute bottom-4 left-4 right-4 p-4 bg-black/50 text-white rounded-b-lg text-center backdrop-blur-sm z-10">{selectedVideo.caption}</p>
             </div>
           )}
         </DialogContent>

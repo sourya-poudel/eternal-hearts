@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger, DialogClose } from '@/components/ui/dialog';
 import { useState } from 'react';
-import { Heart } from 'lucide-react';
+import { Heart, X } from 'lucide-react';
 
 const photos = [
   { src: 'https://placehold.co/600x400.png', hint: 'couple smiling', caption: 'The day we first smiled together. Dec 20, 2023' },
@@ -56,16 +56,20 @@ export default function GallerySection() {
             ))}
           </div>
         </div>
-        <DialogContent className="max-w-4xl w-full p-2 bg-transparent border-none shadow-none">
+        <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-none shadow-none">
             {selectedPhoto && (
                 <div className='relative'>
+                    <DialogClose className="absolute right-2 top-2 z-10 rounded-full p-1 bg-black/50 text-white hover:bg-black/75 transition-colors focus:outline-none">
+                        <X className="w-6 h-6" />
+                        <span className="sr-only">Close</span>
+                    </DialogClose>
                     <Image
                       src={selectedPhoto.src}
                       alt={selectedPhoto.caption}
                       width={1200}
                       height={800}
                       data-ai-hint={selectedPhoto.hint}
-                      className="object-contain w-full h-auto rounded-lg shadow-2xl"
+                      className="object-contain w-full h-auto max-h-[90vh] rounded-lg shadow-2xl"
                     />
                      <p className="absolute bottom-4 left-4 right-4 p-4 bg-black/50 text-white rounded-b-lg text-center backdrop-blur-sm">{selectedPhoto.caption}</p>
                 </div>
