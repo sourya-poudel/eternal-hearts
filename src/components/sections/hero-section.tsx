@@ -5,7 +5,7 @@ import { Heart } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section id="home" className="relative w-full h-[60dvh] md:h-[80dvh] flex items-center justify-center text-center text-white">
+    <section id="home" className="relative w-full h-dvh flex items-center justify-center text-center text-white">
       <Image
         src="https://placehold.co/1920x1080.png"
         alt="Romantic background"

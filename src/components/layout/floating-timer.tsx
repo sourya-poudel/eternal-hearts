@@ -31,7 +31,7 @@ export default function FloatingTimer() {
   
   return (
     <div className="fixed bottom-4 right-4 z-50">
-        <Card className="shadow-2xl bg-card/80 backdrop-blur-sm border-primary/30 w-64">
+        <Card className="shadow-2xl bg-card border-primary/30 w-64">
             <CardHeader className="p-3 pb-1 text-center">
                 <CardTitle className="font-headline text-md text-primary flex items-center justify-center gap-2">
                     <Heart className="w-4 h-4" />
