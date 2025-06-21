@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogTrigger, DialogClose } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { useState } from 'react';
 import { Heart, X } from 'lucide-react';
 
@@ -59,6 +59,8 @@ export default function GallerySection() {
         <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-none shadow-none">
             {selectedPhoto && (
                 <div className='relative'>
+                    <DialogTitle className="sr-only">{selectedPhoto.caption}</DialogTitle>
+                    <DialogDescription className="sr-only">A larger view of the selected photo: {selectedPhoto.caption}</DialogDescription>
                     <DialogClose className="absolute right-2 top-2 z-10 rounded-full p-1 bg-black/50 text-white hover:bg-black/75 transition-colors focus:outline-none">
                         <X className="w-6 h-6" />
                         <span className="sr-only">Close</span>

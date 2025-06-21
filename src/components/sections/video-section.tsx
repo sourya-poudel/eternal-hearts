@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { PlayCircle, Heart, X } from 'lucide-react';
-import { Dialog, DialogContent, DialogTrigger, DialogClose } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { useState } from 'react';
 
 
@@ -59,6 +59,8 @@ export default function VideoSection() {
         <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-none shadow-none aspect-video">
           {selectedVideo && (
             <div className="relative w-full h-full">
+                <DialogTitle className="sr-only">{selectedVideo.caption}</DialogTitle>
+                <DialogDescription className="sr-only">A larger view of the selected video: {selectedVideo.caption}</DialogDescription>
                 <DialogClose className="absolute right-2 top-2 z-20 rounded-full p-1 bg-black/50 text-white hover:bg-black/75 transition-colors focus:outline-none">
                     <X className="w-6 h-6" />
                     <span className="sr-only">Close</span>
