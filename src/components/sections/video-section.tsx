@@ -5,6 +5,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { PlayCircle, Heart, X } from 'lucide-react';
 import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 
 const videos = [
@@ -54,6 +56,11 @@ export default function VideoSection() {
                 </Card>
               </DialogTrigger>
             ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button asChild size="lg" variant="outline" className="bg-transparent border-primary/40 text-primary hover:bg-primary/10 hover:border-primary/60">
+                <Link href="/videos">View More Videos</Link>
+            </Button>
           </div>
         </div>
         <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-none shadow-none aspect-video">

@@ -5,6 +5,8 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { useState } from 'react';
 import { Heart, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const photos = [
   { src: 'https://placehold.co/600x400.png', hint: 'couple smiling', caption: 'The day we first smiled together. Dec 20, 2023' },
@@ -54,6 +56,11 @@ export default function GallerySection() {
                 </Card>
               </DialogTrigger>
             ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button asChild size="lg" variant="outline" className="bg-transparent border-primary/40 text-primary hover:bg-primary/10 hover:border-primary/60">
+              <Link href="/gallery">View Full Gallery</Link>
+            </Button>
           </div>
         </div>
         <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-none shadow-none">

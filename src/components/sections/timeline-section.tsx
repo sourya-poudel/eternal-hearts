@@ -3,6 +3,8 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Heart, CalendarHeart, HandHeart, Users, HeartPulse } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const timelineEvents = [
   {
@@ -156,6 +158,11 @@ export default function TimelineSection() {
               <EventTimer date={event.jsDate} title={event.title} />
             </div>
           ))}
+        </div>
+        <div className="text-center mt-16">
+          <Button asChild size="lg" variant="outline" className="bg-transparent border-primary/40 text-primary hover:bg-primary/10 hover:border-primary/60">
+            <Link href="/timeline">View Full Timeline</Link>
+          </Button>
         </div>
       </div>
     </section>

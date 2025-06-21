@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Heart, Play } from 'lucide-react';
+import Link from 'next/link';
 
 const audioFiles = [
   {
@@ -53,6 +54,11 @@ export default function AudioSection() {
               </CardContent>
             </Card>
           ))}
+        </div>
+        <div className="text-center mt-12">
+            <Button asChild size="lg" variant="outline" className="bg-transparent border-primary/40 text-primary hover:bg-primary/10 hover:border-primary/60">
+                <Link href="/audio">Explore Soundtrack</Link>
+            </Button>
         </div>
       </div>
     </section>
