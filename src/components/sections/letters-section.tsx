@@ -32,7 +32,7 @@ export default function LettersSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {letters.map((letter, index) => (
-            <Card key={index} className="flex flex-col text-center items-center p-6 bg-card/50 border-2 border-dashed border-primary/20 hover:border-primary/50 transition-all duration-300 transform hover:scale-105">
+            <Card key={index} className="flex flex-col text-center items-center p-6 bg-card/80 backdrop-blur-lg border-2 border-dashed border-primary/20 hover:border-primary/50 transition-all duration-300 transform hover:scale-105">
                 <div className="p-4 bg-primary/20 rounded-full mb-4">
                     <Heart className="w-8 h-8 text-primary" />
                 </div>

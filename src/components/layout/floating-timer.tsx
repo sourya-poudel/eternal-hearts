@@ -56,7 +56,7 @@ export default function FloatingTimer() {
         "fixed bottom-4 right-4 z-50 transition-opacity duration-500",
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
     )}>
-        <Card className="shadow-2xl bg-card border-primary/30 w-64">
+        <Card className="shadow-2xl bg-card/80 backdrop-blur-lg border-primary/30 w-64">
             <CardHeader className="p-3 pb-1 text-center">
                 <CardTitle className="font-headline text-md text-primary flex items-center justify-center gap-2">
                     <Heart className="w-4 h-4" />

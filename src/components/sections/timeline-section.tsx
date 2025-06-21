@@ -80,7 +80,7 @@ const EventTimer = ({ date, title }: { date: string, title: string }) => {
   
   return (
     <div className="w-full md:w-5/12 p-4 flex items-center justify-center">
-        <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300 w-full bg-card border-primary/20">
+        <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300 w-full bg-card/80 backdrop-blur-lg border-primary/20">
             <CardHeader className="text-center p-4">
                 <CardTitle className="font-headline text-xl text-primary">{isFuture ? 'Counting Down To' : 'Counting Up From'}</CardTitle>
                 <CardDescription className="line-clamp-1">{title}</CardDescription>
@@ -129,7 +129,7 @@ export default function TimelineSection() {
             <div key={index} className={`mb-8 flex flex-col md:flex-row items-center w-full justify-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
               {/* Event Card */}
               <div className="w-full md:w-5/12 p-4">
-                <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
+                <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300 bg-card/80 backdrop-blur-lg">
                   <CardHeader>
                     <CardDescription>{event.date}</CardDescription>
                     <CardTitle className="font-headline text-2xl">{event.title}</CardTitle>
