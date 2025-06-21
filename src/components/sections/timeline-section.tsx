@@ -6,89 +6,101 @@ import { useState, useEffect } from 'react';
 
 const timelineEvents = [
   {
-    date: 'December 16, 2023',
-    title: 'First Meeting',
-    description: 'The day our paths crossed and a new story began. A moment of serendipity.',
-    icon: <Heart className="w-6 h-6 text-white" />,
-  },
-  {
     date: 'December 21, 2024',
     title: 'First Interaction',
     description: 'Our first real conversation at the COFAS international computer olympiad.',
     icon: <CalendarHeart className="w-6 h-6 text-white" />,
+    jsDate: '2024-12-21T00:00:00',
   },
   {
     date: 'April 1, 2025',
     title: 'The Proposal',
     description: 'Exactly at midnight, when I asked you to be mine forever, and our journey truly started.',
     icon: <Heart className="w-6 h-6 text-white fill-white" />,
-    special: 'timer',
+    jsDate: '2025-04-01T00:00:00',
   },
   {
     date: 'April 3, 2025',
     title: 'First Time Holding Hands',
     description: 'That simple touch that sent sparks flying and made the world disappear.',
     icon: <HandHeart className="w-6 h-6 text-white" />,
+    jsDate: '2025-04-03T00:00:00',
   },
   {
     date: 'April 19, 2025',
     title: 'Parents Found Out',
     description: 'The day our love became known, marking a new chapter in our story.',
     icon: <Users className="w-6 h-6 text-white" />,
+    jsDate: '2025-04-19T00:00:00',
   },
   {
     date: 'May 6, 2025',
     title: 'Our First Kiss',
     description: 'A moment sealed with a kiss, a promise of all the beautiful moments to come.',
     icon: <HeartPulse className="w-6 h-6 text-white" />,
+    jsDate: '2025-05-06T00:00:00',
+  },
+  {
+    date: 'December 16, 2025',
+    title: 'First Meeting',
+    description: 'The day our paths crossed and a new story began. A moment of serendipity.',
+    icon: <Heart className="w-6 h-6 text-white" />,
+    jsDate: '2025-12-16T00:00:00',
   },
 ];
 
-const CountdownTimer = () => {
+const EventTimer = ({ date, title }: { date: string, title: string }) => {
     const [timeSince, setTimeSince] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    const [isFuture, setIsFuture] = useState(false);
 
     useEffect(() => {
-        const proposalDate = new Date('2025-04-01T00:00:00');
+        const eventDate = new Date(date);
         
         const interval = setInterval(() => {
             const now = new Date();
-            if (now < proposalDate) return;
-
-            const totalSeconds = Math.floor((now.getTime() - proposalDate.getTime()) / 1000);
+            
+            let totalSeconds;
+            if (now < eventDate) {
+                setIsFuture(true);
+                totalSeconds = Math.floor((eventDate.getTime() - now.getTime()) / 1000);
+            } else {
+                setIsFuture(false);
+                totalSeconds = Math.floor((now.getTime() - eventDate.getTime()) / 1000);
+            }
+            
             const days = Math.floor(totalSeconds / (3600 * 24));
             const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
             const minutes = Math.floor((totalSeconds % 3600) / 60);
             const seconds = totalSeconds % 60;
-            
             setTimeSince({ days, hours, minutes, seconds });
         }, 1000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [date]);
   
   return (
     <div className="w-full md:w-5/12 p-4 flex items-center justify-center">
         <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300 w-full bg-primary/10 border-primary/20">
-            <CardHeader className="text-center">
-                <CardTitle className="font-headline text-2xl text-primary">Counting Up Since We Began</CardTitle>
-                <CardDescription>Our journey as one...</CardDescription>
+            <CardHeader className="text-center p-4">
+                <CardTitle className="font-headline text-xl text-primary">{isFuture ? 'Counting Down To' : 'Counting Up From'}</CardTitle>
+                <CardDescription className="line-clamp-1">{title}</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-4 pt-0">
                 <div className="grid grid-cols-4 gap-2 text-center">
                     <div>
-                        <div className="font-bold text-3xl md:text-4xl text-primary">{timeSince.days}</div>
+                        <div className="font-bold text-2xl md:text-3xl text-primary">{timeSince.days}</div>
                         <div className="text-xs text-muted-foreground">Days</div>
                     </div>
                      <div>
-                        <div className="font-bold text-3xl md:text-4xl text-primary">{timeSince.hours}</div>
+                        <div className="font-bold text-2xl md:text-3xl text-primary">{timeSince.hours}</div>
                         <div className="text-xs text-muted-foreground">Hours</div>
                     </div>
                      <div>
-                        <div className="font-bold text-3xl md:text-4xl text-primary">{timeSince.minutes}</div>
+                        <div className="font-bold text-2xl md:text-3xl text-primary">{timeSince.minutes}</div>
                         <div className="text-xs text-muted-foreground">Minutes</div>
                     </div>
                      <div>
-                        <div className="font-bold text-3xl md:text-4xl text-primary">{timeSince.seconds}</div>
+                        <div className="font-bold text-2xl md:text-3xl text-primary">{timeSince.seconds}</div>
                         <div className="text-xs text-muted-foreground">Seconds</div>
                     </div>
                 </div>
@@ -114,9 +126,9 @@ export default function TimelineSection() {
           <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/20 hidden md:block" />
 
           {timelineEvents.map((event, index) => (
-            <div key={index} className={`mb-12 flex items-center w-full ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+            <div key={index} className={`mb-8 flex flex-col md:flex-row items-center w-full justify-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
               {/* Event Card */}
-              <div className="w-full md:w-5/12">
+              <div className="w-full md:w-5/12 p-4">
                 <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
                   <CardHeader>
                     <CardDescription>{event.date}</CardDescription>
@@ -135,15 +147,13 @@ export default function TimelineSection() {
                   </div>
               </div>
 
-              {/* Spacer */}
-              <div className="hidden md:block md:w-1/12"></div>
-
-              {/* Other Side: Timer or Empty Div */}
-              {event.special === 'timer' ? (
-                <CountdownTimer />
-              ) : (
-                <div className="hidden md:block md:w-5/12"></div>
-              )}
+              {/* Mobile spacer */}
+              <div className="w-full my-4 md:hidden">
+                <div className="h-0.5 bg-primary/20 w-1/2 mx-auto" />
+              </div>
+              
+              {/* Timer */}
+              <EventTimer date={event.jsDate} title={event.title} />
             </div>
           ))}
         </div>

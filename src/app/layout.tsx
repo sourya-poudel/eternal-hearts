@@ -1,10 +1,11 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
+import FloatingTimer from '@/components/layout/floating-timer';
 
 export const metadata: Metadata = {
-  title: 'Eternal Hearts',
-  description: 'A digital love story.',
+  title: 'Sourya & Bibhuti',
+  description: 'In every chapter, I choose you.',
 };
 
 export default function RootLayout({
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className="font-body antialiased">
         {children}
         <Toaster />
+        <FloatingTimer />
       </body>
     </html>
   );

@@ -6,20 +6,24 @@ import GallerySection from '@/components/sections/gallery-section';
 import VideoSection from '@/components/sections/video-section';
 import LettersSection from '@/components/sections/letters-section';
 import AudioSection from '@/components/sections/audio-section';
+import FloatingHearts from '@/components/layout/floating-hearts';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-dvh bg-background">
-      <Header />
-      <main className="flex-1">
-        <HeroSection />
-        <TimelineSection />
-        <GallerySection />
-        <VideoSection />
-        <LettersSection />
-        <AudioSection />
-      </main>
-      <Footer />
+    <div className="flex flex-col min-h-dvh bg-background relative">
+      <FloatingHearts />
+      <div className="relative z-10">
+        <Header />
+        <main className="flex-1">
+          <HeroSection />
+          <TimelineSection />
+          <GallerySection />
+          <VideoSection />
+          <LettersSection />
+          <AudioSection />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }
