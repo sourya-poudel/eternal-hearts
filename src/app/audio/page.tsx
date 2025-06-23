@@ -13,43 +13,49 @@ import { audioFiles } from '@/lib/audio-data';
 
 export default function AudioPage() {
   const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const togglePlay = (src: string) => {
-    if (audioRef.current) {
-      if (currentlyPlaying === src && !audioRef.current.paused) {
-        audioRef.current.pause();
-        setCurrentlyPlaying(null);
-      } else {
-        if (currentlyPlaying !== src) {
-          audioRef.current.src = src;
-        }
-        audioRef.current.play().catch(e => console.error("Audio playback error:", e));
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (currentlyPlaying === src && isPlaying) {
+      audio.pause();
+    } else {
+      if (currentlyPlaying !== src) {
+        audio.src = src;
         setCurrentlyPlaying(src);
       }
+      audio.play().catch(e => console.error("Audio playback error:", e));
     }
   };
 
   useEffect(() => {
-    // Create audio element on mount
-    audioRef.current = new Audio();
-    audioRef.current.volume = 0.5;
-
-    const handleEnded = () => setCurrentlyPlaying(null);
     const audio = audioRef.current;
-    audio.addEventListener('ended', handleEnded);
+    if (!audio) return;
+
+    audio.volume = 0.5;
+
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+
+    audio.addEventListener('play', handlePlay);
+    audio.addEventListener('pause', handlePause);
+    audio.addEventListener('ended', handlePause);
 
     // Cleanup on unmount
     return () => {
-        if (audio) {
-            audio.removeEventListener('ended', handleEnded);
-            audio.pause();
-        }
+      audio.removeEventListener('play', handlePlay);
+      audio.removeEventListener('pause', handlePause);
+      audio.removeEventListener('ended', handlePause);
+      audio.pause();
     };
   }, []);
 
   return (
     <div className="flex flex-col min-h-dvh bg-background relative">
+        <audio ref={audioRef} />
         <FloatingHearts />
         <div className="relative z-10">
             <Header />
@@ -89,12 +95,12 @@ export default function AudioPage() {
                                 className="rounded-full w-12 h-12 hover:bg-primary/10 group"
                                 onClick={() => togglePlay(file.src)}
                             >
-                                {currentlyPlaying === file.src ? (
+                                {currentlyPlaying === file.src && isPlaying ? (
                                 <Pause className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
                                 ) : (
                                 <Play className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
                                 )}
-                                <span className="sr-only">{currentlyPlaying === file.src ? 'Pause' : 'Play'}</span>
+                                <span className="sr-only">{currentlyPlaying === file.src && isPlaying ? 'Pause' : 'Play'}</span>
                             </Button>
                         </CardContent>
                         </Card>

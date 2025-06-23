@@ -12,34 +12,43 @@ const previewAudioFiles = audioFiles.slice(0, 4);
 
 export default function AudioSection() {
   const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const togglePlay = (src: string) => {
-    if (audioRef.current) {
-      if (currentlyPlaying === src && !audioRef.current.paused) {
-        audioRef.current.pause();
-        setCurrentlyPlaying(null);
-      } else {
-        if (currentlyPlaying !== src) {
-          audioRef.current.src = src;
-        }
-        audioRef.current.play().catch(e => console.error("Audio playback error:", e));
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (currentlyPlaying === src && isPlaying) {
+      audio.pause();
+    } else {
+      if (currentlyPlaying !== src) {
+        audio.src = src;
         setCurrentlyPlaying(src);
       }
+      audio.play().catch(e => console.error("Audio playback error:", e));
     }
   };
 
   useEffect(() => {
-    audioRef.current = new Audio();
-    audioRef.current.volume = 0.5;
-    
-    const handleEnded = () => setCurrentlyPlaying(null);
     const audio = audioRef.current;
-    audio.addEventListener('ended', handleEnded);
+    if (!audio) return;
+    
+    audio.volume = 0.5;
 
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+
+    audio.addEventListener('play', handlePlay);
+    audio.addEventListener('pause', handlePause);
+    audio.addEventListener('ended', handlePause);
+
+    // Cleanup on unmount
     return () => {
         if (audio) {
-            audio.removeEventListener('ended', handleEnded);
+            audio.removeEventListener('play', handlePlay);
+            audio.removeEventListener('pause', handlePause);
+            audio.removeEventListener('ended', handlePause);
             audio.pause();
         }
     };
@@ -47,6 +56,7 @@ export default function AudioSection() {
 
   return (
     <section id="audio" className="w-full py-16 md:py-24 bg-secondary/50">
+      <audio ref={audioRef} />
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center mb-12">
           <h2 className="font-headline text-4xl md:text-5xl font-bold flex items-center gap-3">
@@ -75,12 +85,12 @@ export default function AudioSection() {
                   className="rounded-full w-12 h-12 hover:bg-primary/10 group"
                   onClick={() => togglePlay(file.src)}
                 >
-                  {currentlyPlaying === file.src ? (
+                  {currentlyPlaying === file.src && isPlaying ? (
                     <Pause className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
                   ) : (
                     <Play className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
                   )}
-                  <span className="sr-only">{currentlyPlaying === file.src ? 'Pause' : 'Play'}</span>
+                  <span className="sr-only">{currentlyPlaying === file.src && isPlaying ? 'Pause' : 'Play'}</span>
                 </Button>
               </CardContent>
             </Card>
