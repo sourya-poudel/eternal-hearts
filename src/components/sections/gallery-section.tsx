@@ -9,14 +9,14 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const photos = [
-  { src: 'https://i.ibb.co/L5kL04v/IMG-20240714-WA0004.jpg', hint: 'couple smiling', caption: 'The day we first smiled together. Dec 20, 2023' },
-  { src: 'https://i.ibb.co/L5kL04v/IMG-20240714-WA0004.jpg', hint: 'couple smiling', caption: 'Our first fancy dinner date. Jan 15, 2024' },
-  { src: 'https://previews.dropbox.com/p/thumb/ACo8PhXB6UmmLWTh3N4o04KgldQns-eGRF9nlsnxwbeBR-C5QsDsEXtnAhuVxlBN7q0Pdgq8qy0ifaOAxC5XoEHCQfj3jugEurIbqQrsxmtN5cezBGsb8l2rbWBP-5V03uF1bZZFEvNWmGB0A_pXFUwlhRe-R_mA6mz7F7ldNUKPuhDHVHYUFAaR6l99kdRBU8dU81scflw22F2j3MMj_rQOSgGTlgZrngSJs2ysMEK5FWS0VqAJAHqsMk3ZitU5rmqj1F5WuTnesUG6i7tix1xpGh9PKXLhuq_bbUrRvzoieDAL9ZQpPbCUNgcWqbAigiUve8QSleDXRkUuNX1YTixm/p.jpeg?is_prewarmed=true', hint: 'beach sunset', caption: 'Sunset walks on the beach. Feb 14, 2024' },
-  { src: 'https://previews.dropbox.com/p/thumb/ACo8PhXB6UmmLWTh3N4o04KgldQns-eGRF9nlsnxwbeBR-C5QsDsEXtnAhuVxlBN7q0Pdgq8qy0ifaOAxC5XoEHCQfj3jugEurIbqQrsxmtN5cezBGsb8l2rbWBP-5V03uF1bZZFEvNWmGB0A_pXFUwlhRe-R_mA6mz7F7ldNUKPuhDHVHYUFAaR6l99kdRBU8dU81scflw22F2j3MMj_rQOSgGTlgZrngSJs2ysMEK5FWS0VqAJAHqsMk3ZitU5rmqj1F5WuTnesUG6i7tix1xpGh9PKXLhuq_bbUrRvzoieDAL9ZQpPbCUNgcWqbAigiUve8QSleDXRkUuNX1YTixm/p.jpeg?is_prewarmed=true', hint: 'city walk', caption: 'Exploring the city lights. Mar 10, 2024' },
-  { src: 'https://previews.dropbox.com/p/thumb/ACo8PhXB6UmmLWTh3N4o04KgldQns-eGRF9nlsnxwbeBR-C5QsDsEXtnAhuVxlBN7q0Pdgq8qy0ifaOAxC5XoEHCQfj3jugEurIbqQrsxmtN5cezBGsb8l2rbWBP-5V03uF1bZZFEvNWmGB0A_pXFUwlhRe-R_mA6mz7F7ldNUKPuhDHVHYUFAaR6l99kdRBU8dU81scflw22F2j3MMj_rQOSgGTlgZrngSJs2ysMEK5FWS0VqAJAHqsMk3ZitU5rmqj1F5WuTnesUG6i7tix1xpGh9PKXLhuq_bbUrRvzoieDAL9ZQpPbCUNgcWqbAigiUve8QSleDXRkUuNX1YTixm/p.jpeg?is_prewarmed=true', hint: 'coffee date', caption: 'Countless coffee dates. Apr 22, 2024' },
-  { src: 'https://previews.dropbox.com/p/thumb/ACo8PhXB6UmmLWTh3N4o04KgldQns-eGRF9nlsnxwbeBR-C5QsDsEXtnAhuVxlBN7q0Pdgq8qy0ifaOAxC5XoEHCQfj3jugEurIbqQrsxmtN5cezBGsb8l2rbWBP-5V03uF1bZZFEvNWmGB0A_pXFUwlhRe-R_mA6mz7F7ldNUKPuhDHVHYUFAaR6l99kdRBU8dU81scflw22F2j3MMj_rQOSgGTlgZrngSJs2ysMEK5FWS0VqAJAHqsMk3ZitU5rmqj1F5WuTnesUG6i7tix1xpGh9PKXLhuq_bbUrRvzoieDAL9ZQpPbCUNgcWqbAigiUve8QSleDXRkUuNX1YTixm/p.jpeg?is_prewarmed=true', hint: 'mountain hike', caption: 'Adventures in the mountains. May 30, 2024' },
-  { src: 'https://previews.dropbox.com/p/thumb/ACo8PhXB6UmmLWTh3N4o04KgldQns-eGRF9nlsnxwbeBR-C5QsDsEXtnAhuVxlBN7q0Pdgq8qy0ifaOAxC5XoEHCQfj3jugEurIbqQrsxmtN5cezBGsb8l2rbWBP-5V03uF1bZZFEvNWmGB0A_pXFUwlhRe-R_mA6mz7F7ldNUKPuhDHVHYUFAaR6l99kdRBU8dU81scflw22F2j3MMj_rQOSgGTlgZrngSJs2ysMEK5FWS0VqAJAHqsMk3ZitU5rmqj1F5WuTnesUG6i7tix1xpGh9PKXLhuq_bbUrRvzoieDAL9ZQpPbCUNgcWqbAigiUve8QSleDXRkUuNX1YTixm/p.jpeg?is_prewarmed=true', hint: 'anniversary dinner', caption: 'Our first anniversary dinner. Dec 16, 2024' },
-  { src: 'https://previews.dropbox.com/p/thumb/ACo8PhXB6UmmLWTh3N4o04KgldQns-eGRF9nlsnxwbeBR-C5QsDsEXtnAhuVxlBN7q0Pdgq8qy0ifaOAxC5XoEHCQfj3jugEurIbqQrsxmtN5cezBGsb8l2rbWBP-5V03uF1bZZFEvNWmGB0A_pXFUwlhRe-R_mA6mz7F7ldNUKPuhDHVHYUFAaR6l99kdRBU8dU81scflw22F2j3MMj_rQOSgGTlgZrngSJs2ysMEK5FWS0VqAJAHqsMk3ZitU5rmqj1F5WuTnesUG6i7tix1xpGh9PKXLhuq_bbUrRvzoieDAL9ZQpPbCUNgcWqbAigiUve8QSleDXRkUuNX1YTixm/p.jpeg?is_prewarmed=true', hint: 'road trip', caption: 'Our latest road trip adventure.' },
+    { src: 'https://i.ibb.co/L5kL04v/IMG-20240714-WA0004.jpg', hint: 'couple smiling', caption: 'The day we first smiled together. Dec 20, 2023' },
+    { src: 'https://i.ibb.co/TMCB1y1R/IMG-20250623-211920.jpg', hint: 'holding hands', caption: 'Our First Time Holding Hands Sharing Couple Bracelets. Apr 7, 2025' },
+    { src: 'https://i.ibb.co/d4pTWKNY/IMG-20250623-210321.jpg', hint: 'beach sunset', caption: 'Sunset walks on the beach. Feb 14, 2024' },
+    { src: 'https://i.ibb.co/KTW8mcf/image-2025-06-23-211046853.png', hint: 'city walk', caption: 'Exploring the city lights. Mar 10, 2024' },
+    { src: 'https://placehold.co/400x600.png', hint: 'coffee date', caption: 'Countless coffee dates. Apr 22, 2024' },
+    { src: 'https://placehold.co/600x400.png', hint: 'mountain hike', caption: 'Adventures in the mountains. May 30, 2024' },
+    { src: 'https://placehold.co/600x400.png', hint: 'baking together', caption: 'Making a mess in the kitchen. Jun 18, 2024' },
+    { src: 'https://placehold.co/400x600.png', hint: 'park picnic', caption: 'A perfect picnic day. Jul 05, 2024' },
 ];
 
 export default function GallerySection() {
