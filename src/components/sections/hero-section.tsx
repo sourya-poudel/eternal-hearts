@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <section id="home" className="relative w-full h-dvh flex items-center justify-center text-center text-white">
       <Image
-        src="https://i.ibb.co/L5kL04v/IMG-20240714-WA0004.jpg"
+        src="https://i.ibb.co/SwtkZsM8/image-2025-06-23-215729317.png"
         alt="Romantic background"
         data-ai-hint="couple romantic"
         layout="fill"
@@ -24,7 +24,6 @@ export default function HeroSection() {
         <div className="mt-8 flex justify-center gap-4">
             <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
                 <Link href="#timeline">
-                    <Heart className="w-4 h-4 mr-2"/>
                     Our Story
                 </Link>
             </Button>
