@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-dvh bg-background relative">
       <FloatingHearts />
-      <div className="relative z-10">
+      <div className="relative z-0">
         <Header />
         <main className="flex-1">
           <HeroSection />

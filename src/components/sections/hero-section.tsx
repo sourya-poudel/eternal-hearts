@@ -7,12 +7,12 @@ export default function HeroSection() {
   return (
     <section id="home" className="relative w-full h-dvh flex items-center justify-center text-center text-white">
       <Image
-        src="https://i.ibb.co/SwtkZsM8/image-2025-06-23-215729317.png"
+        src="https://i.ibb.co/L5kL04v/IMG-20240714-WA0004.jpg"
         alt="Romantic background"
         data-ai-hint="couple romantic"
         layout="fill"
         objectFit="cover"
-        className="brightness-50"
+        className="brightness-50 z-0"
       />
       <div className="relative z-10 p-4">
         <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight drop-shadow-lg">

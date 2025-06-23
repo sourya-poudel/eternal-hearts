@@ -43,7 +43,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-2">
           <Heart className="w-6 h-6 text-primary" />
           <span className="font-headline text-2xl font-bold text-foreground">
-            Sourya & Bibhuti
+            [S&B]
           </span>
         </Link>
         <div className="hidden md:flex">
