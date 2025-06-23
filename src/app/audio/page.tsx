@@ -1,47 +1,53 @@
+
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Heart, Play, ArrowLeft } from 'lucide-react';
+import { Heart, Play, Pause, ArrowLeft } from 'lucide-react';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import FloatingHearts from '@/components/layout/floating-hearts';
 import Link from 'next/link';
-
-const audioFiles = [
-  {
-    title: 'Our Song',
-    artist: 'A Special Dedication',
-  },
-  {
-    title: 'A Message For You',
-    artist: 'From my heart',
-  },
-  {
-    title: 'First Dance',
-    artist: 'Memory Lane',
-  },
-  {
-    title: 'Good Morning, Love',
-    artist: 'Voice Note',
-  },
-  {
-    title: 'Road Trip Playlist',
-    artist: 'Adventures on the road',
-  },
-  {
-    title: 'Rainy Day Mood',
-    artist: 'Cozied up inside',
-  },
-  {
-    title: 'Favorite Movie Scores',
-    artist: 'The sound of our stories',
-  },
-  {
-    title: 'Late Night Talks',
-    artist: 'Whispers and dreams',
-  },
-];
+import { audioFiles } from '@/lib/audio-data';
 
 export default function AudioPage() {
+  const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const togglePlay = (src: string) => {
+    if (audioRef.current) {
+      if (currentlyPlaying === src && !audioRef.current.paused) {
+        audioRef.current.pause();
+        setCurrentlyPlaying(null);
+      } else {
+        if (currentlyPlaying !== src) {
+          audioRef.current.src = src;
+        }
+        audioRef.current.play().catch(e => console.error("Audio playback error:", e));
+        setCurrentlyPlaying(src);
+      }
+    }
+  };
+
+  useEffect(() => {
+    // Create audio element on mount
+    audioRef.current = new Audio();
+    audioRef.current.volume = 0.5;
+
+    const handleEnded = () => setCurrentlyPlaying(null);
+    const audio = audioRef.current;
+    audio.addEventListener('ended', handleEnded);
+
+    // Cleanup on unmount
+    return () => {
+        if (audio) {
+            audio.removeEventListener('ended', handleEnded);
+            audio.pause();
+        }
+    };
+  }, []);
+
   return (
     <div className="flex flex-col min-h-dvh bg-background relative">
         <FloatingHearts />
@@ -67,8 +73,8 @@ export default function AudioPage() {
                     </Button>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    {audioFiles.map((file, index) => (
-                        <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    {audioFiles.map((file) => (
+                        <Card key={file.title} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                         <CardContent className="p-6 flex items-center gap-4">
                             <div className="bg-primary/20 p-4 rounded-full">
                             <Heart className="w-8 h-8 text-primary" />
@@ -77,9 +83,18 @@ export default function AudioPage() {
                             <h3 className="font-bold text-lg">{file.title}</h3>
                             <p className="text-sm text-muted-foreground">{file.artist}</p>
                             </div>
-                            <Button size="icon" variant="ghost" className="rounded-full w-12 h-12 hover:bg-primary/10 group">
-                            <Play className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
-                            <span className="sr-only">Play</span>
+                            <Button
+                                size="icon"
+                                variant="ghost"
+                                className="rounded-full w-12 h-12 hover:bg-primary/10 group"
+                                onClick={() => togglePlay(file.src)}
+                            >
+                                {currentlyPlaying === file.src ? (
+                                <Pause className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
+                                ) : (
+                                <Play className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
+                                )}
+                                <span className="sr-only">{currentlyPlaying === file.src ? 'Pause' : 'Play'}</span>
                             </Button>
                         </CardContent>
                         </Card>
