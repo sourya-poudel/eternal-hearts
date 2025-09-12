@@ -1,7 +1,7 @@
 'use client';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Heart, CalendarHeart, HandHeart, Users, HeartPulse } from 'lucide-react';
+import { Heart, CalendarHeart, HandHeart, Users, HeartPulse, Gift } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -25,7 +25,7 @@ const timelineEvents = [
     date: 'April 1, 2025',
     title: 'The Proposal',
     description: 'Exactly at midnight, when I asked you to be mine forever, and our journey truly started.',
-    icon: <Heart className="w-6 h-6 text-white fill-white" />,
+    icon: <Gift className="w-6 h-6 text-white" />,
     jsDate: '2025-04-01T00:00:00',
   },
   {

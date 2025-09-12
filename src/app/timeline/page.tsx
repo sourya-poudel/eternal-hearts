@@ -2,7 +2,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import FloatingHearts from '@/components/layout/floating-hearts';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Heart, CalendarHeart, HandHeart, Users, HeartPulse, Gift, Plane, Home, ArrowLeft } from 'lucide-react';
+import { Heart, CalendarHeart, HandHeart, Users, HeartPulse, Gift, Music2, Camera, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
@@ -23,7 +23,7 @@ const timelineEvents = [
     date: 'April 1, 2025',
     title: 'The Proposal',
     description: 'Exactly at midnight, when I asked you to be mine forever, and our journey truly started.',
-    icon: <Heart className="w-6 h-6 text-white fill-white" />,
+    icon: <Gift className="w-6 h-6 text-white" />,
   },
   {
     date: 'April 3, 2025',
@@ -44,22 +44,22 @@ const timelineEvents = [
     icon: <HeartPulse className="w-6 h-6 text-white" />,
   },
   {
-    date: 'June 1, 2025',
+    date: 'July 1, 2025',
     title: 'First Gift Exchange',
     description: 'Exchanging gifts that symbolized our growing affection and understanding of each other.',
     icon: <Gift className="w-6 h-6 text-white" />,
   },
   {
-    date: 'July 20, 2025',
-    title: 'Our First Trip Together',
-    description: 'Exploring new places, creating memories that will last a lifetime.',
-    icon: <Plane className="w-6 h-6 text-white" />,
+    date: 'August 23, 2025',
+    title: 'First Dance',
+    description: 'The moment our hearts found their rhythm — our very first dance.',
+    icon: <Music2 className="w-6 h-6 text-white" />,
   },
   {
-    date: 'September 10, 2025',
-    title: 'Moving In Together',
-    description: 'Starting a new chapter by making a home together.',
-    icon: <Home className="w-6 h-6 text-white" />,
+    date: 'August 24, 2025',
+    title: 'First Couple Photo',
+    description: 'The day we captured us — the beginning of a beautiful chapter.',
+    icon: <Camera className="w-6 h-6 text-white" />,
   },
 ];
 

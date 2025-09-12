@@ -7,7 +7,13 @@ import { useState } from 'react';
 import { Heart, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { photos } from '@/lib/gallery-data';
+
+const photos = [
+    { src: 'https://i.ibb.co/Jw0HsNnN/file-00000000dab061fbab5bacb541c1c0a4.png', hint: 'couple smiling', caption: 'The day we first smiled together. Dec 20, 2023' },
+    { src: 'https://i.ibb.co/TMCB1y1R/IMG-20250623-211920.jpg', hint: 'holding hands', caption: 'Our First Time Holding Hands Sharing Couple Bracelets. Apr 7, 2025' },
+    { src: 'https://i.ibb.co/d4pTWKNY/IMG-20250623-210321.jpg', hint: 'beach sunset', caption: 'Sunset walks on the beach. Feb 14, 2024' },
+    { src: 'https://i.ibb.co/KTW8mcf/image-2025-06-23-211046853.png', hint: 'city walk', caption: 'Exploring the city lights. Mar 10, 2024' },
+  ];
 
 export default function GallerySection() {
   const [selectedPhoto, setSelectedPhoto] = useState<(typeof photos)[0] | null>(null);
@@ -27,7 +33,7 @@ export default function GallerySection() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
-            {photos.slice(0, 4).map((photo, index) => (
+            {photos.slice(0, 8).map((photo, index) => (
               <DialogTrigger key={index} asChild onClick={() => setSelectedPhoto(photo)}>
                 <Card className="overflow-hidden group transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
                   <CardContent className="p-0">
