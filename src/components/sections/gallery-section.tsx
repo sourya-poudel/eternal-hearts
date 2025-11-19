@@ -9,10 +9,10 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 const photos = [
-    { src: 'https://i.ibb.co/Jw0HsNnN/file-00000000dab061fbab5bacb541c1c0a4.png', hint: 'couple smiling', caption: 'The day we first smiled together. Dec 20, 2023' },
+    { src: 'https://i.ibb.co/KTW8mcf/image-2025-06-23-211046853.png', hint: 'couple smiling', caption: 'The day we first smiled together. Dec 20, 2023' },
     { src: 'https://i.ibb.co/TMCB1y1R/IMG-20250623-211920.jpg', hint: 'holding hands', caption: 'Our First Time Holding Hands Sharing Couple Bracelets. Apr 7, 2025' },
-    { src: 'https://i.ibb.co/d4pTWKNY/IMG-20250623-210321.jpg', hint: 'beach sunset', caption: 'Sunset walks on the beach. Feb 14, 2024' },
-    { src: 'https://i.ibb.co/KTW8mcf/image-2025-06-23-211046853.png', hint: 'city walk', caption: 'Exploring the city lights. Mar 10, 2024' },
+    { src: 'https://i.ibb.co/XZrC4csY/image-2025-11-19-204936220.png', hint: 'mirror selfie', caption: 'The most precious photo I have ever seen. Aug 25, 2025' },
+    { src: 'https://i.ibb.co/HLxbvNCH/image-2025-11-19-204956802.png', hint: 'frontdesk', caption: 'Quick click before the OPs arrived, ;) Aug 25, 2025' },
   ];
 
 export default function GallerySection() {

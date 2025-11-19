@@ -1,7 +1,7 @@
 
 export const photos = [
-  { src: 'https://i.ibb.co/L5kL04v/IMG-20240714-WA0004.jpg', hint: 'couple smiling', caption: 'The day we first smiled together. Dec 20, 2023' },
-  { src: 'https://i.ibb.co/TMCB1y1R/IMG-20250623-211920.jpg', hint: 'holding hands', caption: 'Our First Time Holding Hands Sharing Couple Bracelets. Apr 7, 2025' },
+  { src: 'https://i.ibb.co/7d75mDm/image.png', hint: 'couple smiling', caption: 'The day we first smiled together. Dec 20, 2023' },
+  { src: 'https://i.ibb.co/TMCB1yR/IMG-20250623-211920.jpg', hint: 'holding hands', caption: 'Our First Time Holding Hands Sharing Couple Bracelets. Apr 7, 2025' },
   { src: 'https://i.ibb.co/d4pTWKNY/IMG-20250623-210321.jpg', hint: 'beach sunset', caption: 'Sunset walks on the beach. Feb 14, 2024' },
   { src: 'https://i.ibb.co/KTW8mcf/image-2025-06-23-211046853.png', hint: 'city walk', caption: 'Exploring the city lights. Mar 10, 2024' },
   { src: 'https://placehold.co/400x600.png', hint: 'coffee date', caption: 'Countless coffee dates. Apr 22, 2024' },

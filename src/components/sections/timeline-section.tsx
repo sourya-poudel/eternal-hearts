@@ -112,7 +112,6 @@ const EventTimer = ({ date, title }: { date: string, title: string }) => {
   );
 }
 
-
 export default function TimelineSection() {
   return (
     <section id="timeline" className="w-full py-16 md:py-24 bg-secondary/50">
