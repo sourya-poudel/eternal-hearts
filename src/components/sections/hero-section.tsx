@@ -10,9 +10,9 @@ export default function HeroSection() {
         src="https://i.ibb.co/SwtkZsM8/image-2025-06-23-215729317.png"
         alt="Romantic background"
         data-ai-hint="couple romantic"
-        layout="fill"
-        objectFit="cover"
-        className="brightness-50 z-0"
+        fill
+        priority
+        className="object-cover brightness-50 z-0"
       />
       <div className="relative z-10 p-4">
         <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight drop-shadow-lg">
