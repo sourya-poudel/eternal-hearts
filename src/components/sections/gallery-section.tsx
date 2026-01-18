@@ -28,24 +28,26 @@ export default function GallerySection() {
               A collection of moments that made us who we are. Click a photo to see it larger.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-8 space-y-8">
             {previewPhotos.map((photo, index) => (
               <DialogTrigger key={index} asChild onClick={() => setSelectedPhoto(photo)}>
-                <Card className="overflow-hidden group transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer">
-                  <CardContent className="p-0">
-                    <Image
-                      src={photo.src}
-                      alt={photo.caption}
-                      width={600}
-                      height={400}
-                      data-ai-hint={photo.hint}
-                      className="object-cover w-full h-auto transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </CardContent>
-                  <CardFooter className="p-4 bg-card">
-                    <p className="text-sm text-muted-foreground">{photo.caption}</p>
-                  </CardFooter>
-                </Card>
+                <div className="break-inside-avoid group cursor-pointer transform transition-all duration-300 hover:-translate-y-2">
+                  <Card className="overflow-hidden hover:shadow-2xl hover:shadow-primary/20">
+                    <CardContent className="p-0">
+                      <Image
+                        src={photo.src}
+                        alt={photo.caption}
+                        width={600}
+                        height={400}
+                        data-ai-hint={photo.hint}
+                        className="object-cover w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </CardContent>
+                    <CardFooter className="p-4 bg-card">
+                      <p className="text-sm text-muted-foreground">{photo.caption}</p>
+                    </CardFooter>
+                  </Card>
+                </div>
               </DialogTrigger>
             ))}
           </div>
