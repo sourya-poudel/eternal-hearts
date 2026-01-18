@@ -8,24 +8,25 @@ import { Music } from 'lucide-react';
 export default function BackgroundAudio() {
   const [showMusicDialog, setShowMusicDialog] = useState(false);
   const [musicEnabled, setMusicEnabled] = useState(false);
-  const [iframeSrc, setIframeSrc] = useState('https://open.spotify.com/embed/track/6qqrTXSdwiJaq8SO0X2lSe?utm_source=generator&theme=1');
+  // Start with an empty src. We will set it upon user interaction.
+  const [iframeSrc, setIframeSrc] = useState('');
 
   useEffect(() => {
-    // This effect should only run on the client
     if (typeof window === 'undefined') return;
 
-    // Check session storage for user's consent
     const consent = sessionStorage.getItem('musicConsent');
     
+    // If consent was previously given, enable music immediately with autoplay.
+    // This will work on navigations within the site, but might be blocked on first load.
     if (consent === 'true') {
       setMusicEnabled(true);
-      // Attempt to autoplay if consent already exists. Might be blocked by browser.
       setIframeSrc('https://open.spotify.com/embed/track/6qqrTXSdwiJaq8SO0X2lSe?utm_source=generator&theme=1&autoplay=1');
-    } else if (consent === null) {
-      // If consent is not given or denied, show the dialog after a delay
+    } 
+    // If we haven't asked yet, show the dialog.
+    else if (consent === null) {
       const timer = setTimeout(() => {
         setShowMusicDialog(true);
-      }, 2000); // 2-second delay
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -33,7 +34,7 @@ export default function BackgroundAudio() {
   const handleEnableMusic = () => {
     sessionStorage.setItem('musicConsent', 'true');
     setMusicEnabled(true);
-    // Specifically set the src with autoplay on this user interaction
+    // Crucially, set the autoplay source *here* in direct response to the click.
     setIframeSrc('https://open.spotify.com/embed/track/6qqrTXSdwiJaq8SO0X2lSe?utm_source=generator&theme=1&autoplay=1');
     setShowMusicDialog(false);
   };
@@ -45,13 +46,10 @@ export default function BackgroundAudio() {
 
   const handleDialogChange = (isOpen: boolean) => {
     setShowMusicDialog(isOpen);
-    if (!isOpen) {
-        // If the dialog is being closed without consent, treat it as declining for the session.
-        if (sessionStorage.getItem('musicConsent') === null) {
-            handleDeclineMusic();
-        }
+    if (!isOpen && sessionStorage.getItem('musicConsent') === null) {
+        handleDeclineMusic();
     }
-  }
+  };
 
   return (
     <>
@@ -78,7 +76,8 @@ export default function BackgroundAudio() {
         </DialogContent>
       </Dialog>
 
-      {musicEnabled && (
+      {/* Render the iframe only when music is enabled and the src is set. */}
+      {musicEnabled && iframeSrc && (
         <div className="hidden">
           <iframe
             title="Spotify Player"
