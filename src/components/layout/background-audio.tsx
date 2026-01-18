@@ -8,6 +8,7 @@ import { Music } from 'lucide-react';
 export default function BackgroundAudio() {
   const [showMusicDialog, setShowMusicDialog] = useState(false);
   const [musicEnabled, setMusicEnabled] = useState(false);
+  const [iframeSrc, setIframeSrc] = useState('https://open.spotify.com/embed/track/6qqrTXSdwiJaq8SO0X2lSe?utm_source=generator&theme=1');
 
   useEffect(() => {
     // This effect should only run on the client
@@ -18,6 +19,8 @@ export default function BackgroundAudio() {
     
     if (consent === 'true') {
       setMusicEnabled(true);
+      // Attempt to autoplay if consent already exists. Might be blocked by browser.
+      setIframeSrc('https://open.spotify.com/embed/track/6qqrTXSdwiJaq8SO0X2lSe?utm_source=generator&theme=1&autoplay=1');
     } else if (consent === null) {
       // If consent is not given or denied, show the dialog after a delay
       const timer = setTimeout(() => {
@@ -30,6 +33,8 @@ export default function BackgroundAudio() {
   const handleEnableMusic = () => {
     sessionStorage.setItem('musicConsent', 'true');
     setMusicEnabled(true);
+    // Specifically set the src with autoplay on this user interaction
+    setIframeSrc('https://open.spotify.com/embed/track/6qqrTXSdwiJaq8SO0X2lSe?utm_source=generator&theme=1&autoplay=1');
     setShowMusicDialog(false);
   };
 
@@ -78,7 +83,7 @@ export default function BackgroundAudio() {
           <iframe
             title="Spotify Player"
             style={{ borderRadius: '12px' }}
-            src="https://open.spotify.com/embed/track/6qqrTXSdwiJaq8SO0X2lSe?utm_source=generator&theme=1&autoplay=1"
+            src={iframeSrc}
             width="100%"
             height="152"
             frameBorder="0"
