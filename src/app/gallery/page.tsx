@@ -28,11 +28,11 @@ export default function GalleryPage() {
                     <div className="flex flex-col items-center text-center mb-12">
                         <h2 className="font-headline text-4xl md:text-5xl font-bold flex items-center gap-3">
                             <Heart className="w-10 h-10 text-primary/50" />
-                            Photo Gallery
+                            Our Photo Gallery
                             <Heart className="w-10 h-10 text-primary/50" />
                         </h2>
                         <p className="mt-4 max-w-2xl text-muted-foreground text-lg">
-                        A collection of moments that made us who we are. Click a photo to see it larger.
+                        A collection of moments that made us who we are. Click any photo to see it larger.
                         </p>
                          <Button asChild variant="ghost" className="mt-8">
                             <Link href="/#gallery">
@@ -41,26 +41,26 @@ export default function GalleryPage() {
                             </Link>
                         </Button>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+                    <div className="columns-1 sm:columns-2 md:columns-3 gap-4 md:gap-8 space-y-8">
                         {photos.map((photo, index) => (
                         <DialogTrigger key={index} asChild onClick={() => setSelectedPhoto(photo)}>
-                            <Card className="overflow-hidden group transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
-                            <CardContent className="p-0">
-                                <div className="aspect-w-1 aspect-h-1 relative overflow-hidden">
+                            <div className="break-inside-avoid group cursor-pointer">
+                                <Card className="overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20">
+                                <CardContent className="p-0">
                                     <Image
-                                    src={photo.src}
-                                    alt={photo.caption}
-                                    width={600}
-                                    height={400}
-                                    data-ai-hint={photo.hint}
-                                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                                        src={photo.src}
+                                        alt={photo.caption}
+                                        width={600}
+                                        height={400}
+                                        className="object-cover w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                                        data-ai-hint={photo.hint}
                                     />
-                                </div>
-                            </CardContent>
-                            <CardFooter className="p-4 bg-card">
-                                <p className="text-sm text-muted-foreground">{photo.caption}</p>
-                            </CardFooter>
-                            </Card>
+                                </CardContent>
+                                <CardFooter className="p-4 bg-card">
+                                    <p className="text-sm text-muted-foreground">{photo.caption}</p>
+                                </CardFooter>
+                                </Card>
+                            </div>
                         </DialogTrigger>
                         ))}
                     </div>

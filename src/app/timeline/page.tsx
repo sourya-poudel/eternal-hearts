@@ -72,10 +72,10 @@ export default function TimelinePage() {
         <main className="flex-1">
            <section id="timeline-full" className="w-full py-16 md:py-24 bg-secondary/50">
               <div className="container mx-auto px-4 md:px-6">
-                <div className="flex flex-col items-center text-center mb-12">
+                <div className="flex flex-col items-center text-center mb-16">
                   <h2 className="font-headline text-4xl md:text-5xl font-bold">Our Sweet Timeline</h2>
                   <p className="mt-4 max-w-2xl text-muted-foreground text-lg">
-                    A complete history of our beautiful journey together.
+                    A complete history of our beautiful journey together, one moment at a time.
                   </p>
                    <Button asChild variant="ghost" className="mt-8">
                         <Link href="/#timeline">
@@ -84,23 +84,29 @@ export default function TimelinePage() {
                         </Link>
                     </Button>
                 </div>
-                <div className="max-w-2xl mx-auto space-y-8">
-                    {timelineEvents.map((event, index) => (
-                        <Card key={index} className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300 bg-card/80 backdrop-blur-lg border-primary/20">
-                            <CardHeader className="flex flex-row items-center gap-4 p-4">
-                                <div className="bg-primary rounded-full w-12 h-12 flex items-center justify-center shadow-lg flex-shrink-0">
-                                    {event.icon}
+                <div className="max-w-3xl mx-auto">
+                    <div className="relative border-l-2 border-dashed border-primary/30 ml-6 py-4">
+                        {timelineEvents.map((event, index) => (
+                            <div key={index} className="mb-12 relative">
+                                <div className="absolute -left-[31px] -top-1 z-10">
+                                    <div className="bg-primary rounded-full w-14 h-14 flex items-center justify-center shadow-lg">
+                                        {event.icon}
+                                    </div>
                                 </div>
-                                <div>
-                                    <CardDescription>{event.date}</CardDescription>
-                                    <CardTitle className="font-headline text-2xl">{event.title}</CardTitle>
+                                <div className="ml-12">
+                                    <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300 bg-card/80 backdrop-blur-lg border-primary/20">
+                                        <CardHeader className="p-6">
+                                            <CardDescription>{event.date}</CardDescription>
+                                            <CardTitle className="font-headline text-2xl">{event.title}</CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="p-6 pt-0">
+                                            <p className="text-muted-foreground">{event.description}</p>
+                                        </CardContent>
+                                    </Card>
                                 </div>
-                            </CardHeader>
-                            <CardContent className="p-4 pt-0">
-                                <p className="text-muted-foreground pl-16">{event.description}</p>
-                            </CardContent>
-                        </Card>
-                    ))}
+                            </div>
+                        ))}
+                    </div>
                 </div>
               </div>
             </section>

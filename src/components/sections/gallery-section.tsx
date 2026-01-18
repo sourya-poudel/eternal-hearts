@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { photos } from '@/lib/gallery-data';
 
-const previewPhotos = photos.slice(0, 4);
+const previewPhotos = photos.slice(0, 6);
 
 export default function GallerySection() {
   const [selectedPhoto, setSelectedPhoto] = useState<(typeof photos)[0] | null>(null);
@@ -28,19 +28,19 @@ export default function GallerySection() {
               A collection of moments that made us who we are. Click a photo to see it larger.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {previewPhotos.map((photo, index) => (
               <DialogTrigger key={index} asChild onClick={() => setSelectedPhoto(photo)}>
-                <Card className="overflow-hidden group transform transition-transform duration-300 hover:-translate-y-2 cursor-pointer">
+                <Card className="overflow-hidden group transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer">
                   <CardContent className="p-0">
-                    <div className="aspect-w-1 aspect-h-1 relative overflow-hidden">
+                    <div className="aspect-[4/3] relative overflow-hidden">
                         <Image
                           src={photo.src}
                           alt={photo.caption}
-                          width={600}
-                          height={400}
+                          fill
                           data-ai-hint={photo.hint}
                           className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
                     </div>
                   </CardContent>
