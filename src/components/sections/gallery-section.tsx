@@ -33,16 +33,14 @@ export default function GallerySection() {
               <DialogTrigger key={index} asChild onClick={() => setSelectedPhoto(photo)}>
                 <Card className="overflow-hidden group transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer">
                   <CardContent className="p-0">
-                    <div className="aspect-[4/3] relative overflow-hidden">
-                        <Image
-                          src={photo.src}
-                          alt={photo.caption}
-                          fill
-                          data-ai-hint={photo.hint}
-                          className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                    </div>
+                    <Image
+                      src={photo.src}
+                      alt={photo.caption}
+                      width={600}
+                      height={400}
+                      data-ai-hint={photo.hint}
+                      className="object-cover w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                    />
                   </CardContent>
                   <CardFooter className="p-4 bg-card">
                     <p className="text-sm text-muted-foreground">{photo.caption}</p>
