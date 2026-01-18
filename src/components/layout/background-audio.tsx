@@ -8,7 +8,8 @@ import { Music } from 'lucide-react';
 export default function BackgroundAudio() {
   const [showMusicDialog, setShowMusicDialog] = useState(false);
   const playerContainerRef = useRef<HTMLDivElement>(null);
-  const consentKey = 'musicConsent-v2';
+  // Using a new key to reset any previous faulty state.
+  const consentKey = 'musicConsent-v3';
 
   // Function to create and inject the player
   const createPlayer = () => {
@@ -42,7 +43,7 @@ export default function BackgroundAudio() {
   const handleEnableMusic = () => {
     sessionStorage.setItem(consentKey, 'true');
     setShowMusicDialog(false);
-    // Create the player directly on click. This is the most reliable way.
+    // Create the player directly on click. This is the most reliable way to satisfy browser autoplay policies.
     createPlayer();
   };
 
@@ -84,7 +85,7 @@ export default function BackgroundAudio() {
         </DialogContent>
       </Dialog>
       
-      {/* This container will hold the iframe, injected imperatively */}
+      {/* This container will hold the iframe, which is injected after consent. */}
       <div ref={playerContainerRef} />
     </>
   );
