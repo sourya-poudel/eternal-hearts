@@ -3,7 +3,6 @@ import Footer from '@/components/layout/footer';
 import HeroSection from '@/components/sections/hero-section';
 import TimelineSection from '@/components/sections/timeline-section';
 import GallerySection from '@/components/sections/gallery-section';
-import VideoSection from '@/components/sections/video-section';
 import LettersSection from '@/components/sections/letters-section';
 import FloatingHearts from '@/components/layout/floating-hearts';
 
@@ -17,7 +16,6 @@ export default function Home() {
           <HeroSection />
           <TimelineSection />
           <GallerySection />
-          <VideoSection />
           <LettersSection />
         </main>
         <Footer />

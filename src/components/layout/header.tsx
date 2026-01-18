@@ -14,7 +14,6 @@ import { cn } from '@/lib/utils';
 const navItems = [
   { href: '#timeline', label: 'Timeline' },
   { href: '#gallery', label: 'Gallery' },
-  { href: '#videos', label: 'Videos' },
   { href: '#letters', label: 'Letters' },
 ];
 
