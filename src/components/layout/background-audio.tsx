@@ -32,16 +32,11 @@ export default function BackgroundAudio() {
     const consent = sessionStorage.getItem('musicConsent');
     
     if (consent === 'true') {
-      // If consent was already given, create player immediately.
-      // Autoplay might still fail on first load but work on navigations.
       createPlayer();
     } 
     else if (consent === null) {
-      // If we haven't asked yet, show the dialog.
-      const timer = setTimeout(() => {
-        setShowMusicDialog(true);
-      }, 2000);
-      return () => clearTimeout(timer);
+      // If we haven't asked yet, show the dialog immediately.
+      setShowMusicDialog(true);
     }
   }, []);
 
