@@ -8,7 +8,7 @@ import { Music } from 'lucide-react';
 export default function BackgroundAudio() {
   const [showMusicDialog, setShowMusicDialog] = useState(false);
   const playerContainerRef = useRef<HTMLDivElement>(null);
-  const consentKey = 'musicConsent-v2'; // Using a new key to reset state
+  const consentKey = 'musicConsent-v2';
 
   // Function to create and inject the player
   const createPlayer = () => {
@@ -16,13 +16,11 @@ export default function BackgroundAudio() {
       playerContainerRef.current.innerHTML = `
         <iframe
           title="Spotify Player"
-          style="display: none;"
           src="https://open.spotify.com/embed/track/6qqrTXSdwiJaq8SO0X2lSe?utm_source=generator&theme=1&autoplay=1"
           width="1"
           height="1"
           frameBorder="0"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
         ></iframe>`;
     }
   };
