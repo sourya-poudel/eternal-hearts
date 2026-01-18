@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import FloatingTimer from '@/components/layout/floating-timer';
+import BackgroundAudio from '@/components/layout/background-audio';
 
 export const metadata: Metadata = {
   title: 'Sourya & Bibhuti',
@@ -24,6 +25,7 @@ export default function RootLayout({
         {children}
         <Toaster />
         <FloatingTimer />
+        <BackgroundAudio />
       </body>
     </html>
   );
