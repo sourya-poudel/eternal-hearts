@@ -16,7 +16,6 @@ const navItems = [
   { href: '#gallery', label: 'Gallery' },
   { href: '#videos', label: 'Videos' },
   { href: '#letters', label: 'Letters' },
-  { href: '#audio', label: 'Soundtrack' },
 ];
 
 export default function Header() {

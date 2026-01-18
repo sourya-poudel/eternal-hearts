@@ -5,7 +5,6 @@ import TimelineSection from '@/components/sections/timeline-section';
 import GallerySection from '@/components/sections/gallery-section';
 import VideoSection from '@/components/sections/video-section';
 import LettersSection from '@/components/sections/letters-section';
-import AudioSection from '@/components/sections/audio-section';
 import FloatingHearts from '@/components/layout/floating-hearts';
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
           <GallerySection />
           <VideoSection />
           <LettersSection />
-          <AudioSection />
         </main>
         <Footer />
       </div>
