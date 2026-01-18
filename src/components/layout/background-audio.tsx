@@ -8,6 +8,7 @@ import { Music } from 'lucide-react';
 export default function BackgroundAudio() {
   const [showMusicDialog, setShowMusicDialog] = useState(false);
   const playerContainerRef = useRef<HTMLDivElement>(null);
+  const consentKey = 'musicConsent-v2'; // Using a new key to reset state
 
   // Function to create and inject the player
   const createPlayer = () => {
@@ -29,7 +30,7 @@ export default function BackgroundAudio() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const consent = sessionStorage.getItem('musicConsent');
+    const consent = sessionStorage.getItem(consentKey);
     
     if (consent === 'true') {
       createPlayer();
@@ -41,21 +42,21 @@ export default function BackgroundAudio() {
   }, []);
 
   const handleEnableMusic = () => {
-    sessionStorage.setItem('musicConsent', 'true');
+    sessionStorage.setItem(consentKey, 'true');
     setShowMusicDialog(false);
     // Create the player directly on click. This is the most reliable way.
     createPlayer();
   };
 
   const handleDeclineMusic = () => {
-    sessionStorage.setItem('musicConsent', 'false');
+    sessionStorage.setItem(consentKey, 'false');
     setShowMusicDialog(false);
   };
 
   const handleDialogChange = (isOpen: boolean) => {
     setShowMusicDialog(isOpen);
     // If the user closes the dialog without making a choice, consider it a 'decline'.
-    if (!isOpen && sessionStorage.getItem('musicConsent') === null) {
+    if (!isOpen && sessionStorage.getItem(consentKey) === null) {
         handleDeclineMusic();
     }
   };
