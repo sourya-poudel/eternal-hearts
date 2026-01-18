@@ -2,7 +2,7 @@
 
 export default function BackgroundAudio() {
   return (
-    <div className="fixed bottom-4 left-4 z-50 w-80 hidden md:block">
+    <div className="hidden">
          <iframe
             title="Spotify Player"
             style={{borderRadius: '12px'}}
