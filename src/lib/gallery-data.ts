@@ -1,6 +1,6 @@
 
 export const photos = [
-  { src: 'https://i.ibb.co/KTW8mcf/image-2025-06-23-211046853.png', hint: 'couple smiling', caption: 'The day we first smiled together. Dec 20, 2023' },
+  { src: 'https://i.ibb.co/1JsNVcL2/Whats-App-Image-2026-01-18-at-18-41-27.jpg', hint: 'couple smiling', caption: 'The day we first smiled together. Dec 20, 2023' },
   { src: 'https://i.ibb.co/BHyJ05K2/Whats-App-Image-2026-01-18-at-18-41-41.jpg', hint: 'couple selfie', caption: 'Our First Time Holding Hands Sharing Couple Bracelets. Apr 7, 2025' },
   { src: 'https://i.ibb.co/HLxbvNCH/image-2025-11-19-204956802.png', hint: 'frontdesk', caption: 'Quick click before the OPs arrived, ;) Aug 25, 2025' },
   { src: 'https://i.ibb.co/7cQ97ML/image-2025-11-19-204946273.png', hint: 'coffee date', caption: 'Countless coffee dates. Apr 22, 2024' },
